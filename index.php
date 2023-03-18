@@ -241,8 +241,64 @@ function fonction7(int $x1, int $y1):int{
 $z1 = fonction7(2, 7);
 echo $z1;
 
+/****** LES TABLEAUX = ARRAYS ******/
+
+$maVariable26 = array("Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche");
+var_dump($maVariable26);
+$mardi = $maVariable26[1];
+echo $mardi;
+echo("<br>");
+echo count($maVariable26); // ==> Retourne le nombre d'éléments dans le tableau
+echo("<br>");
+for($d = 0; $d < count($maVariable26); $d++ ){
+    echo "$maVariable26[$d] <br>";
+};
+
+$maVariable27 = array("Pierre" => 30, "Paul" => 35, "Jack" =>50);
+var_dump($maVariable27);
+
+echo $maVariable27["Paul"]; // Retourne 35
+echo("<br>");
+foreach($maVariable27 as $name => $age){
+    echo "$name a $age ans <br>";
+};
 
 
+
+/****** LES OBJETS ******/
+
+class Etudiant{
+    public $etudie = true;
+    public $nom;
+    public $age;
+    public $notes;
+
+    public function __construct($nom, $age, $notes){
+        $this -> nom = $nom;
+        $this -> age = $age;
+        $this -> notes = $notes;
+    }
+
+    public function sePresente(){
+        if ($this->etudie){
+            echo "Je m'appelle $this->nom et j'ai $this->age ans. <br>";
+            foreach($this->notes as $matiere => $note){
+                echo "en $matiere j'ai obtenu $note /20 <br>";
+            }
+
+        }
+    }
+}
+
+$notesJohn = array("Maths" =>17, "Francais" =>10, "Anglais" => 9);
+$john = new Etudiant("John", 31, $notesJohn);
+$john->sePresente();
+
+echo("<br>");echo("<br>");echo("<br>");
+$notesHarry = array("Maths" =>17, "Francais" =>10, "Anglais" => 9);
+$harry = new Etudiant("Harry", 57, $notesHarry);
+$harry->etudie = false;// Ne retourne rien!
+$harry->sePresente();
 ?>
     
 
