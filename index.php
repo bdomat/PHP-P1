@@ -1,5 +1,10 @@
 <?php declare(strict_types=1);?>
 
+<?php session_start();
+$_SESSION["nom"] = "Bertrand";
+setCookie("prenom", "Bertrand", time() * 2);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -299,8 +304,54 @@ $notesHarry = array("Maths" =>17, "Francais" =>10, "Anglais" => 9);
 $harry = new Etudiant("Harry", 57, $notesHarry);
 $harry->etudie = false;// Ne retourne rien!
 $harry->sePresente();
+
+
+/****** INCLUDE ET REQUIRE ******/
+
+//cf dossier "include"
+//"include" permet d'executer du code php externe
+//"require" aussi mais il requiert le chargement obligatoire du fichier externe pour executer le reste du code interne
+
+
+/****** SUPER GLOBALES ******/
+
+$maVariable28 = 5;
+$maVariable29 = 18;
+
+function fonction8(){
+   echo $GLOBALS['maVariable28'];
+}
+fonction8();
+//Exemples de super globales :
+//var_dump($_SERVER);
+// var_dump($_REQUEST);
+// var_dump($_POST);
+// var_dump($_COOKIE);
+// var_dump($_SESSION);
+
+/****** SUPER GLOBALE  GET******/
+//cf dossier "get"
+//permet de faire transiter des données entre les pages
+
+/****** SUPER GLOBALE  POST******/
+//cf dossier "post"
+//permet de faire transiter les données lors de la soumission d'un formulaire
+
+/****** SUPER GLOBALE  SESSION******/
+// permet de retenir des données pendant le temps de la session
+//cf debut de page :
+// <?php session_start();
+// $_SESSION["nom"] = "Bertrand";
+//==> Permet d'initialiser une session
+
+/****** SUPER GLOBALE  COOKIES******/
+//permet de stocker des données pendants plusieurs jours / semaines / mois
+//cf debut de page setCookie("prenom", "Bertrand", time() * 3600*24*30); pour initialiser un cookie
+if(isset($_COOKIE["prenom"])){
+    echo "<h1>Hello".$_COOKIE["prenom"]."</h1>";}
+    else {echo "<h1>Je ne te connais pas</h1>";}
+
 ?>
-    
 
 </body>
 </html>
